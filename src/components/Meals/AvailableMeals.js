@@ -9,10 +9,10 @@ import useHttp from '../../hooks/use-http';
 const AvailableMeals = () => {
     const [meals, setMeals] = useState([]);
 
-    const {isLoading, error, sendRequest: fetchMovieHandler} = useHttp();
+    const {isLoading, error, sendRequest: fetchMealHandler} = useHttp();
 
     const fetchData = () => {
-        const requestMoviesConfig = {url: 'https://react-http-aa7a6-default-rtdb.firebaseio.com/meal.json'};
+        const requestMealsConfig = {url: 'https://react-http-aa7a6-default-rtdb.firebaseio.com/meal.json'};
         const transformMeals = (mealsObj) => {
             const loadMeals = [];
             for (const key in (mealsObj)) {
@@ -25,7 +25,7 @@ const AvailableMeals = () => {
             }
             setMeals(loadMeals);
         };
-        fetchMovieHandler(requestMoviesConfig, transformMeals);
+        fetchMealHandler(requestMealsConfig, transformMeals);
     };
 
     useEffect(() => {
