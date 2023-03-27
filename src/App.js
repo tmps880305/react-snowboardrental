@@ -4,6 +4,7 @@ import Header from './components/Layout/Header';
 import Meals from './components/Meals/Meals'
 import Cart from './components/Cart/Cart';
 import CartProvider from './store/CartProvider';
+import Footer from "./components/UI/Footer";
 
 function App() {
 
@@ -12,11 +13,9 @@ function App() {
     const shownCartHandler = event => {
         setCartIsShown(true);
     };
-
     const hideCartHandler = event => {
         setCartIsShown(false);
     };
-
 
     return (
         <CartProvider>
@@ -25,6 +24,7 @@ function App() {
             <main>
                 <Meals/>
             </main>
+            <Footer/>
         </CartProvider>
     );
 }
