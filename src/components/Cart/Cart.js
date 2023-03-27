@@ -85,7 +85,7 @@ const Cart = (props) => {
     const isLoadingContent = <p>Sending order data ...</p>;
 
     const didSubmitContent = <React.Fragment>
-        <p>Successfully sent the order!</p>
+        <p>Booking Successfully!</p>
         <div className={classes.actions}>
             <button className={classes.button} onClick={orderSuccessHandler}>OK</button>
         </div>

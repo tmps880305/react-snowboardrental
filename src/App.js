@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 
 import Header from './components/Layout/Header';
-import Meals from './components/Meals/Meals'
+import Rentals from './components/Rentals/Rentals'
 import Cart from './components/Cart/Cart';
 import CartProvider from './store/CartProvider';
-import Footer from "./components/UI/Footer";
+import Footer from "./components/Layout/Footer";
 
 function App() {
 
@@ -22,7 +22,7 @@ function App() {
             {cartIsShown && <Cart onHideCart={hideCartHandler}/>}
             <Header onShowCart={shownCartHandler}/>
             <main>
-                <Meals/>
+                <Rentals/>
             </main>
             <Footer/>
         </CartProvider>

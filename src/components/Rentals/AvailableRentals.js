@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react';
 
 import Card from '../UI/Card';
-import classes from './AvailableMeals.module.css';
-import MealItem from './MealItem/MealItem';
+import classes from './AvailableRentals.module.css';
+import RentalItem from './RentalItem/RentalItem';
 import useHttp from '../../hooks/use-http';
 
 
-const AvailableMeals = () => {
+const AvailableRentals = () => {
     const [meals, setMeals] = useState([]);
 
     const {isLoading, error, sendRequest: fetchMealHandler} = useHttp();
@@ -34,7 +34,7 @@ const AvailableMeals = () => {
 
 
     const mealsList = meals.map(meal => {
-        return <MealItem
+        return <RentalItem
             key={meal.id}
             id={meal.id}
             name={meal.name}
@@ -63,4 +63,4 @@ const AvailableMeals = () => {
     )
 };
 
-export default AvailableMeals;
+export default AvailableRentals;

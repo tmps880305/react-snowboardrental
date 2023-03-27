@@ -83,10 +83,10 @@ const Checkout = (props) => {
                 onChange={nameChangeHandler}
                 onBlur={nameBlurHandler}
             />
-            {nameHasError && <label className={classes.invalid}>Name must not be empty.</label>}
+            {nameHasError && <label className={classes.invalid}>Please enter your name.</label>}
         </div>
         <div className={streetInputClasses}>
-            <label htmlFor='street'>Street</label>
+            <label htmlFor='street'>Height</label>
             <input
                 type='text'
                 id='street'
@@ -94,7 +94,7 @@ const Checkout = (props) => {
                 onChange={streetChangeHandler}
                 onBlur={streetBlurHandler}
             />
-            {streetHasError && <label className={classes.invalid}>Street must not be empty.</label>}
+            {streetHasError && <label className={classes.invalid}>Please enter your height.</label>}
         </div>
         <div className={postalInputClasses}>
             <label htmlFor='postal'>Postal Code</label>
@@ -116,7 +116,7 @@ const Checkout = (props) => {
                 onChange={cityChangeHandler}
                 onBlur={cityBlurHandler}
             />
-            {cityHasError && <label className={classes.invalid}>City must not be empty.</label>}
+            {cityHasError && <label className={classes.invalid}>Please enter the city you live.</label>}
         </div>
         <div className={classes.actions}>
             <button type='button' className={classes["button--alt"]} onClick={props.onCancel}>Cancel</button>
