@@ -15,12 +15,12 @@ const Checkout = (props) => {
     } = useInputvalid((value) => value.trim() !== '');
 
     const {
-        value: enteredStreet,
-        isValid: streetIsValid,
-        hasError: streetHasError,
-        inputChangeHandler: streetChangeHandler,
-        inputBlurHandler: streetBlurHandler,
-        resetInput: resetStreet
+        value: enteredHeight,
+        isValid: heightIsValid,
+        hasError: heightHasError,
+        inputChangeHandler: heightChangeHandler,
+        inputBlurHandler: heightBlurHandler,
+        resetInput: resetHeight
     } = useInputvalid((value) => value.trim() !== '');
 
     const {
@@ -41,7 +41,7 @@ const Checkout = (props) => {
         resetInput: resetCity
     } = useInputvalid((value) => value.trim() !== '');
 
-    const formIsValid = nameIsValid && streetIsValid && postalIsValid && cityIsValid;
+    const formIsValid = nameIsValid && heightIsValid && postalIsValid && cityIsValid;
 
     const confirmHandler = event => {
         event.preventDefault();
@@ -49,27 +49,23 @@ const Checkout = (props) => {
         if (!formIsValid) {
             return;
         }
-
-
-        // console.log(`Name: ${enteredName} , Address: ${enteredStreet}, ${enteredCity}, ${enteredPostal}`);
-
+        // console.log(`Name: ${enteredName} , Address: ${enteredHeight}, ${enteredCity}, ${enteredPostal}`);
 
         props.onConfirm({
             name: enteredName,
-            street: enteredStreet,
+            height: enteredHeight,
             city: enteredCity,
             postal: enteredPostal
         });
 
         resetName();
-        resetStreet();
+        resetHeight();
         resetPostal();
         resetCity();
-
     };
 
     const nameInputClasses = `${classes.control} ${nameHasError ? `${classes.invalid}` : ''}`;
-    const streetInputClasses = `${classes.control} ${streetHasError ? `${classes.invalid}` : ''}`;
+    const heightInputClasses = `${classes.control} ${heightHasError ? `${classes.invalid}` : ''}`;
     const postalInputClasses = `${classes.control} ${postalHasError ? `${classes.invalid}` : ''}`;
     const cityInputClasses = `${classes.control} ${cityHasError ? `${classes.invalid}` : ''}`;
 
@@ -85,16 +81,16 @@ const Checkout = (props) => {
             />
             {nameHasError && <label className={classes.invalid}>Please enter your name.</label>}
         </div>
-        <div className={streetInputClasses}>
-            <label htmlFor='street'>Height</label>
+        <div className={heightInputClasses}>
+            <label htmlFor='height'>Height</label>
             <input
                 type='text'
-                id='street'
-                value={enteredStreet}
-                onChange={streetChangeHandler}
-                onBlur={streetBlurHandler}
+                id='height'
+                value={enteredHeight}
+                onChange={heightChangeHandler}
+                onBlur={heightBlurHandler}
             />
-            {streetHasError && <label className={classes.invalid}>Please enter your height.</label>}
+            {heightHasError && <label className={classes.invalid}>Please enter your height.</label>}
         </div>
         <div className={postalInputClasses}>
             <label htmlFor='postal'>Postal Code</label>

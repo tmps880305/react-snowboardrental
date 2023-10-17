@@ -14,7 +14,8 @@ const RentalItem = props => {
             id: props.id,
             name: props.name,
             amount: amount,
-            price: props.price
+            price: props.price,
+            rentalListId: props.id + 1
         });
     };
 

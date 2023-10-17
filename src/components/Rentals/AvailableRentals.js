@@ -12,7 +12,8 @@ const AvailableRentals = () => {
     const {isLoading, error, sendRequest: fetchMealHandler} = useHttp();
 
     const fetchData = () => {
-        const requestMealsConfig = {url: 'https://react-http-aa7a6-default-rtdb.firebaseio.com/meal.json'};
+        const requestMealsConfig = {url: 'http://localhost:8080/api/v1/rentallist'};
+        // const requestMealsConfig = {url: 'https://react-http-aa7a6-default-rtdb.firebaseio.com/meal.json'};
         const transformMeals = (mealsObj) => {
             const loadMeals = [];
             for (const key in (mealsObj)) {

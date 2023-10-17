@@ -6,6 +6,7 @@ import CartItem from './CartItem';
 import CartContext from '../../store/cart-content';
 import Checkout from './Checkout';
 import useHttp from '../../hooks/use-http';
+import CartProvider from "../../store/CartProvider";
 
 const Cart = (props) => {
     const cartCtx = useContext(CartContext);
@@ -31,17 +32,33 @@ const Cart = (props) => {
     };
 
     const submitOrderHandler = (userData) => {
+        // const sendOrderConfig = {
+        //     url: 'https://react-http-aa7a6-default-rtdb.firebaseio.com/orders.json',
+        //     method: 'POST',
+        //     body: {
+        //         user: userData,
+        //         orderItems: cartCtx.items
+        //     },
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     }
+        // };
         const sendOrderConfig = {
-            url: 'https://react-http-aa7a6-default-rtdb.firebaseio.com/orders.json',
+            url: 'http://localhost:8080/api/v1/rentalorder',
             method: 'POST',
             body: {
-                user: userData,
-                orderItems: cartCtx.items
+                customerName: userData.name,
+                height: parseInt(userData.height),
+                postal: userData.postal,
+                city: userData.city,
+                items: cartCtx.items,
+                total: cartCtx.totalAmount
             },
             headers: {
                 'Content-Type': 'application/json'
             }
         };
+        // console.log(cartCtx);
         sendOrderHandler(sendOrderConfig, () => {
         });
         setDidSubmit(true);
