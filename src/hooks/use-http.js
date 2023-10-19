@@ -23,6 +23,7 @@ const useHttp = () => {
 
         } catch (error) {
             setError(error.message || 'Something went wrong.');
+            // console.log(JSON.stringify(error))
         }
         setIsLoading(false);
     }, []);

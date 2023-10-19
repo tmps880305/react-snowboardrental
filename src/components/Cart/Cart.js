@@ -6,7 +6,6 @@ import CartItem from './CartItem';
 import CartContext from '../../store/cart-content';
 import Checkout from './Checkout';
 import useHttp from '../../hooks/use-http';
-import CartProvider from "../../store/CartProvider";
 
 const Cart = (props) => {
     const cartCtx = useContext(CartContext);
@@ -44,7 +43,7 @@ const Cart = (props) => {
         //     }
         // };
         const sendOrderConfig = {
-            url: 'http://localhost:8080/api/v1/rentalorder',
+            url: 'http://localhost:8080/api/v1/rentalorder/neworder',
             method: 'POST',
             body: {
                 customerName: userData.name,
@@ -61,12 +60,16 @@ const Cart = (props) => {
         // console.log(cartCtx);
         sendOrderHandler(sendOrderConfig, () => {
         });
+
         setDidSubmit(true);
+        cartCtx.clearItem();
+
     };
+
 
     const orderSuccessHandler = () => {
         props.onHideCart();
-        cartCtx.clearItem();
+        // cartCtx.clearItem();
         setDidSubmit(false);
     };
 
@@ -108,11 +111,15 @@ const Cart = (props) => {
         </div>
     </React.Fragment>;
 
+    const errorContent = <p>{error}</p>
+
+
     return (
         <Modal onHideCart={props.onHideCart}>
             {!isLoading && !didSubmit && cartModalConent}
             {isLoading && !didSubmit && isLoadingContent}
-            {!isLoading && didSubmit && didSubmitContent}
+            {!isLoading && didSubmit && !error && didSubmitContent}
+            {error && errorContent}
         </Modal>
     )
 };
